@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type { Product } from "../scripts/product.ts"
-import { ref, defineEmits } from "vue"
+import { defineEmits } from "vue"
 
 const emit = defineEmits(['addProduct'])
 
-const newProduct = ref<Product>({
+const newProduct: Product = {
     id: 1,
     name: '',
     description: '',
     price: 0,
     stock: 0
-})
+}
 
 </script>
 <template>

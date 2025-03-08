@@ -1,0 +1,72 @@
+<script setup lang="ts">
+import type { Product } from "../scripts/product.ts"
+import { ref, defineEmits } from "vue"
+
+const props = defineProps<{ 
+    name: string;
+    description: string;
+    price: number;
+    stock: number;
+}>()
+
+const emit = defineEmits(['updateProduct'])
+
+const newProduct = ref<Product>({
+        id: 1,
+        name: props.name,
+        description: props.description,
+        price: props.price,
+        stock: props.stock
+})
+
+</script>
+<template>
+    <form class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nom du produit</label>
+            <input type="text" 
+                :value="props.name" 
+                @input="newProduct.name = ($event.target as HTMLInputElement).value"
+                id="name" 
+                class="form-control">
+            <div class="invalid-tooltip"> 
+                Entrez une description valide. 
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea 
+                :value="props.description" 
+                @input="newProduct.description = ($event.target as HTMLInputElement).value" 
+                id="description" 
+                class="form-control">
+            </textarea>
+            <div class="invalid-tooltip"> 
+                Entrez une description valide. 
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Prix</label>
+            <input type="number" 
+                :value="props.price" 
+                @input="newProduct.price = parseInt(($event.target as HTMLInputElement).value)" 
+                id="price" 
+                class="form-control">
+            <div class="invalid-tooltip"> 
+                Entrez un prix valide. 
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" 
+                    :value="props.stock" 
+                    @input="newProduct.stock = parseInt(($event.target as HTMLInputElement).value)" 
+                    id="stock" 
+                    class="form-control">
+            <div class="invalid-tooltip"> 
+                Entrez une quantité valide. 
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" @click="emit('updateProduct', newProduct)">Modifier</button>
+    </form>
+</template>
