@@ -6,17 +6,25 @@ defineProps<{
     products: Product[] 
 }>()
 
-const emit = defineEmits(['updateProduct'])
+const emit = defineEmits(['updateProduct', 'duplicate'])
 
 const updateProduct = (id: number) => {
 	emit('updateProduct', id)
+};
+
+const duplicateProduct = (id: number) => {
+	emit('duplicate', id)
 };
 
 </script>
 <template>
     <div class="container text-center">
 		<div class="row border border-black rounded">
-			<ProductItem v-for="product in products" @updateProduct="updateProduct" :product="product" />
+			<ProductItem 
+				v-for="product in products" 
+				@updateProduct="updateProduct" 
+				@duplicate="duplicateProduct"
+				:product="product" />
 		</div>
 	</div>
 </template>

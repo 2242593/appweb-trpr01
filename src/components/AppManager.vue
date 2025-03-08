@@ -15,6 +15,7 @@ const products = ref<Product[]>([
     }
 ]);
 
+//Section de modification d'un produit
 const selectedProductId = ref<number>(0)
 const editProductName = ref<string>("");
 const editProductDescription = ref<string>("");
@@ -36,7 +37,6 @@ const editProduct = (product: Product) => {
     if(!editProductName.value.trim()) return;
 	const productToUpdate = products.value.find((product) => product.id === selectedProductId.value);
 	if (productToUpdate) {
-        //update
 		if(product.name.length > 0) productToUpdate.name = product.name;
 		if(product.description.length > 0) productToUpdate.description = product.description;
 		if(product.price > 0) productToUpdate.price = product.price;
@@ -47,6 +47,15 @@ const editProduct = (product: Product) => {
 	}
 }
 
+//Dupliquer un produit
+const duplicateProduct = (id: number) => {
+    const product = products.value.find((product) => product.id === id);
+    if (product){
+        addProduct(product);
+    }
+}
+
+//Ajouter un produit
 const addProduct = (product: Product) => {
     product.id = products.value.length + 1
     products.value.push(product)
@@ -57,15 +66,18 @@ const addProduct = (product: Product) => {
 <template>
     <div class="container-fluid">
         <div class="row">
-            <ProductList class="col-4" :products="products" @updateProduct="startEdit"/>
-            <ProductForm class="col-4" @addProduct="addProduct"/>
+            <ProductList class="col-4" 
+                :products="products" 
+                @updateProduct="startEdit"
+                @duplicate="duplicateProduct"/>
+            <ProductForm class="col-4" 
+                @addProduct="addProduct"/>
             <UpdateProductForm class="col-4" 
                 :name="editProductName" 
                 :description="editProductDescription" 
                 :price="editProductPrice" 
                 :stock="editProductStock"
-                @updateProduct="editProduct"
-            />
+                @updateProduct="editProduct"/>
         </div>
     </div>
 </template>
