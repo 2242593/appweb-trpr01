@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Product } from "../scripts/product.ts"
-import { defineEmits } from "vue"
 
 const emit = defineEmits(['addProduct'])
 

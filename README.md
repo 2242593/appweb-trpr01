@@ -1,5 +1,15 @@
-# Vue 3 + TypeScript + Vite
+# Travail pratique 01
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+-INFORMATIONS:
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Ce site web est un projet d'école pour mon cours de développement d'applications web. Malheureusement, il n'est pas fonctionnel sur github pages...
+
+Je n'ai pas bien fait la configuration de github pages. Cela veut donc dire qu'il faudrait que je me fasse un nouveau repository et que je reconfigure mon projet. Malheureusement, compte tenu de mon manque de temps, ce ne sera pas possible.
+
+-PRÉCISIONS:
+
+Durant le développement de cette application, j'ai utilisé ChatGPT. La première fois était lorsque j'ai fait le développement de la fonction d'ajout d'un produit. Je ne savais pas par où commencer et j'ai demandé à ChatGPT de m'aider. Le code a bien entendu été modififié. 
+
+La deuxième utilisation de ChatGPT était pour une ligne de code pour bootstrap.
+
+Les icônes des boutons des produits ont été trouvées sur ce site: https://icons.getbootstrap.com

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Product } from "../scripts/product.ts"
-import { ref, defineEmits } from "vue"
+import { ref } from "vue"
 
 const props = defineProps<{ 
     name: string;
@@ -9,7 +9,7 @@ const props = defineProps<{
     stock: number;
 }>()
 
-const emit = defineEmits(['updateProduct'])
+const emit = defineEmits(['update'])
 
 const newProduct = ref<Product>({
         id: 1,
@@ -49,7 +49,7 @@ const newProduct = ref<Product>({
             <label for="price" class="form-label">Prix</label>
             <input type="number" 
                 :value="props.price" 
-                @input="newProduct.price = parseInt(($event.target as HTMLInputElement).value)" 
+                @input="newProduct.price = parseFloat(($event.target as HTMLInputElement).value)" 
                 id="price" 
                 class="form-control">
             <div class="invalid-tooltip"> 
@@ -59,14 +59,13 @@ const newProduct = ref<Product>({
         <div class="mb-3">
             <label for="stock" class="form-label">Stock</label>
             <input type="number" 
-                    :value="props.stock" 
-                    @input="newProduct.stock = parseInt(($event.target as HTMLInputElement).value)" 
-                    id="stock" 
-                    class="form-control">
+                :value="props.stock" 
+                @input="newProduct.stock = parseInt(($event.target as HTMLInputElement).value)" 
+                class="form-control">
             <div class="invalid-tooltip"> 
                 Entrez une quantité valide. 
             </div>
         </div>
-        <button type="button" class="btn btn-primary" @click="emit('updateProduct', newProduct)">Modifier</button>
+        <button type="button" class="btn btn-primary" @click="emit('update', newProduct)">Modifier</button>
     </form>
 </template>
