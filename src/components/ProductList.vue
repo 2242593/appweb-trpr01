@@ -22,7 +22,7 @@ const deleteProduct = (id: number) => {
 
 </script>
 <template>
-    <div>
+    <div class="overflow-auto p-3">
 		<ProductItem class="container text-center"
 			v-for="product in products" 
 			@update="updateProduct" 

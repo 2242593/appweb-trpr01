@@ -21,7 +21,7 @@ const newProduct = ref<Product>({
 
 </script>
 <template>
-    <form class="needs-validation" novalidate>
+    <form>
         <div class="mb-3">
             <label for="name" class="form-label">Nom du produit</label>
             <input type="text" 

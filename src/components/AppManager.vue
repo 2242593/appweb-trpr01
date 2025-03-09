@@ -34,13 +34,12 @@ const startEdit = (id: number) => {
 }
 
 const editProduct = (product: Product) => {
-    if(!editProductName.value.trim()) return;
 	const productToUpdate = products.value.find((product) => product.id === selectedProductId.value);
 	if (productToUpdate) {
-		if(product.name.length > 0) productToUpdate.name = product.name;
-		if(product.description.length > 0) productToUpdate.description = product.description;
-		if(product.price > 0) productToUpdate.price = product.price;
-        if(product.stock >= 0) productToUpdate.stock = product.stock;
+		productToUpdate.name = product.name;
+		productToUpdate.description = product.description;
+		productToUpdate.price = product.price;
+        productToUpdate.stock = product.stock;
 
         const id: number = productToUpdate.id
         products.value.splice(id - 1, 1, productToUpdate);
@@ -64,8 +63,11 @@ const duplicateProduct = (id: number) => {
 
 //Ajouter un produit
 const addProduct = (product: Product) => {
-    if(products.value.length === 1) product.id = products.value.length + 1;
-    else product.id = product.id + 1
+    if(products.value.length === 1) {
+        product.id = products.value.length + 1
+    }else if(products.value.length > 1){ 
+        product.id = product.id + 1 
+    }
     products.value.push(product)
 };
 
